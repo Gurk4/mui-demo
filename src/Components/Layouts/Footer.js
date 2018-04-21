@@ -1,3 +1,19 @@
 import React from 'react';
+import { Paper, Tabs } from 'material-ui';
+import { Tab } from 'material-ui/Tabs';
 
-export default props => <h1>Footer</h1>;
+export default props => (
+  <Paper>
+    <Tabs
+      value={0}
+      onChange={null}
+      indicatorColor="primary"
+      textColor="primary"
+      centered
+    >
+      <Tab label="Item One" />
+      <Tab label="Item Two" />
+      <Tab label="Item Three" />
+    </Tabs>
+  </Paper>
+);
