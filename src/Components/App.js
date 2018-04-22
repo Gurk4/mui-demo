@@ -6,7 +6,13 @@ import { exercises, muscles } from '../store.js';
 
 export default class extends Component {
   state = {
-    exercises
+    exercises,
+    tabValue: 0,
+    category: null
+  };
+
+  handleMuscleCategorySelect = category => {
+    this.setState({ category });
   };
 
   getExercisesByCategory = () => {
@@ -28,7 +34,11 @@ export default class extends Component {
 
         <Exercises exercises={this.getExercisesByCategory()} />
 
-        <Footer muscles={muscles} />
+        <Footer
+          muscles={muscles}
+          category={this.state.category}
+          onChange={this.handleMuscleCategorySelect}
+        />
       </Fragment>
     );
   }
