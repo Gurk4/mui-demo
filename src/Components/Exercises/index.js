@@ -1,7 +1,7 @@
-import React from 'react';
-import { Grid, Paper, Typography } from 'material-ui';
+import React, { Fragment } from 'react';
+import { Grid, Paper, Typography, List } from 'material-ui';
+import { ListItem, ListItemText } from 'material-ui/List';
 
-import LeftPane from './LeftPane';
 import RightPane from './RightPane';
 
 const styles = {
@@ -16,7 +16,21 @@ export default ({ exercises }) => (
     <Grid item xs>
       <Paper style={styles.paper}>
         {exercises.map(([group, exercises]) => (
-          <Typography>{group}</Typography>
+          <Fragment>
+            <Typography
+              variant="headline"
+              style={{ textTransform: 'capitalize' }}
+            >
+              {group}
+            </Typography>
+            <List component="ul">
+              {exercises.map(({ title }) => (
+                <ListItem button>
+                  <ListItemText primary={title} />
+                </ListItem>
+              ))}
+            </List>
+          </Fragment>
         ))}
       </Paper>
     </Grid>
