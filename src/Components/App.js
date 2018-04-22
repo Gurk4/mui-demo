@@ -7,12 +7,18 @@ import { exercises, muscles } from '../store.js';
 export default class extends Component {
   state = {
     exercises,
-    tabValue: 0,
+    selectedExercise: null,
     category: null
   };
 
   handleMuscleCategorySelect = category => {
     this.setState({ category });
+  };
+
+  handleExerciseSelect = id => {
+    this.setState(({ exercises }) => ({
+      selectedExercise: exercises.find(e => e.id === id)
+    }));
   };
 
   getExercisesByCategory = () => {
@@ -32,7 +38,12 @@ export default class extends Component {
       <Fragment>
         <Header />
 
-        <Exercises exercises={this.getExercisesByCategory()} />
+        <Exercises
+          exercises={this.getExercisesByCategory()}
+          selectedExercise={this.state.selectedExercise}
+          category={this.state.category}
+          onSelect={this.handleExerciseSelect}
+        />
 
         <Footer
           muscles={muscles}
