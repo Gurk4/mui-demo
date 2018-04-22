@@ -24,8 +24,8 @@ export default ({ exercises }) => (
               {group}
             </Typography>
             <List component="ul">
-              {exercises.map(({ title }) => (
-                <ListItem button>
+              {exercises.map(({ title, id }) => (
+                <ListItem button key={id}>
                   <ListItemText primary={title} />
                 </ListItem>
               ))}
